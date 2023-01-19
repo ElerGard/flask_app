@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/CSS/style.css"/>
+    <title>Новый заказчик</title>
+    {% import "macros.html" as macros %}
+</head>
+<body>
+<div class=menu>
+    <ul>
+        <li class=active><a href="/">Новый заказчик</a></li>
+    </ul>
+</div>
+<div class=block>
+    <form action="{{ url_for('index') }}" method="get">
+        <p>
+            <label>
+                Имя заказчика:
+                <input type="text" name="new_zakazchik" required>
+            </label>
+        </p>
+        <p>
+            <label>
+                Телефон:
+                <input type="text" name="new_za" required>
+            </label>
+        </p>
+        <p>
+            <label>
+                Место проживания:
+                <input type="text" name="new_zaka" required>
+            </label>
+        </p>
+        <p>
+            <input type="submit" value="Добавить заказчика">
+            <input type="button" onclick="window.location='{{ url_for('index') }}'" value="Отменить">
+        </p>
+    </form>
+</div>
+</body>
+</html>

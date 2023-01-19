@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/CSS/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/CSS/table.css"/>
+    <title>Починка техники</title>
+    {% import "macros.html" as macros %}
+</head>
+<body>
+<div class=menu>
+    <ul>
+        <li class=active><a href={{ url_for("index") }}>Менеджер</a></li>
+        <li><a href={{ url_for('workers') }}>Работники</a></li>
+    </ul>
+</div>
+<div class=block>
+    <form action='' method="get">
+        Заказчик:
+        {{ macros.render_zakazchiki(zakazchiki, zakazchik_id, len) }}
+        <input type="submit" value="Найти">
+    </form>
+    </p>
+    </p>
+    <form action="{{ url_for('new_zakazchik') }}" method="get">
+        <input type="submit" value="Новый заказчик">
+    </form>
+    </p>
+        {{ macros.render_table("Список техники", zakazi, "nomer_zakaza_id", 1, len) }}
+    </p>
+    <form action={{ url_for('search') }} method="get">
+        <input type="submit" value="Добавить заказ">
+    </form>
+    </p>
+</div>
+
+</body>
+</html>

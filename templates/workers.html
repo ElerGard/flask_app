@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/CSS/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/CSS/table.css"/>
+    {% import "macros.html" as macros %}
+    <title>Работники</title>
+</head>
+<body>
+<div class=menu>
+    <ul>
+        <li><a href={{ url_for("index") }}>Менеджер</a></li>
+        <li class=active><a href={{ url_for('workers') }}>Работники</a></li>
+    </ul>
+</div>
+<div class=block>
+    <form action='' method="get">
+        Заказчик:
+        {{ macros.render_workers(workers, worker_id, len) }}
+        <input type="submit" value="Найти">
+    </form>
+    </p>
+        {{ macros.render_table("Список заказов", zakazi, "nomer_zakaza_id", 2, len) }}
+    </p>
+</div>
+
+</body>
+</html>

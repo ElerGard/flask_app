@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Выбор техники для ремонта</title>
+    <link rel="stylesheet" type="text/css" href="/static/CSS/search.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/CSS/style.css"/>
+    {% import "macros.html" as macros %}
+</head>
+<body>
+<div class=menu>
+    <ul>
+        <li class=active><a href="/">Выбор техники для ремонта</a></li>
+    </ul>
+</div>
+<div class="content">
+    <div class="lists">
+        <form action="" method="post">
+            {{ macros.render_filters('Производители', proizvoditel, proizvoditels, len) }}
+            <br>
+            <input type="submit" value="Найти">
+            <input type="submit" name="clear" value="Очистить">
+        </form>
+    </div>
+    <div class="result">
+        <form action="{{ url_for('index') }}" method="get">
+            <input type="button" onclick="window.location='{{ url_for('index') }}'" value="Не выбирать технику">
+        </form>
+        <div class="chosen">
+            {{ macros.render_selected(proizvoditel, proizvoditels, 'Производители', len) }}
+        </div>
+        <div class="cards">
+            {{ macros.render_cards(card, len) }}
+        </div>
+    </div>
+</div>
+</body>
+</html>
