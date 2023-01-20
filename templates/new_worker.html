@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/CSS/style.css"/>
+    <title>Новый работник</title>
+    {% import "macros.html" as macros %}
+</head>
+<body>
+<div class=menu>
+    <ul>
+        <li class=active><a href="/">Новый работник</a></li>
+    </ul>
+</div>
+<div class=block>
+    <form action="{{ url_for('workers') }}" method="get">
+        <p>
+            <label>
+                Фио:
+                <input type="text" name="worker_FIO" required>
+            </label>
+        </p>
+        <p>
+            <label>
+                Должность:
+                <input type="text" name="worker_dolzhnost" required>
+            </label>
+        </p>
+        <p>
+            <input type="submit" value="Добавить работника">
+            <input type="button" onclick="window.location='{{ url_for('workers') }}'" value="Отменить">
+        </p>
+    </form>
+</div>
+</body>
+</html>

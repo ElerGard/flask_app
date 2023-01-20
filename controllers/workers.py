@@ -1,7 +1,7 @@
 from app import app
 from flask import render_template, request, session
 from utils import get_db_connection
-from models.worker_model import get_workers, get_zakaz_zakazchika, complete
+from models.worker_model import get_workers, get_zakaz_zakazchika, complete, get_new_worker
 
 @app.route('/workers', methods=['get'])
 def workers():
@@ -10,6 +10,11 @@ def workers():
     if request.values.get('worker'):
         worker_id = int(request.values.get('worker'))
         session['worker_id'] = worker_id
+    elif request.values.get('worker_FIO'):
+        worker_FIO = request.values.get('worker_FIO')
+        worker_dolzhnost = request.values.get('worker_dolzhnost')
+        print("asdas")
+        session['worker_id'] = get_new_worker(conn, worker_FIO, worker_dolzhnost)
     elif request.values.get('complete'):
         job_id = int(request.values.get('complete'))
         complete(conn, job_id)

@@ -20,6 +20,10 @@
         <input type="submit" value="Найти">
     </form>
     </p>
+    <form action="{{ url_for('new_worker') }}" method="get">
+        <input type="submit" value="Новый работник">
+    </form>
+    </p>
         {{ macros.render_table("Список заказов", zakazi, "nomer_zakaza_id", 2, len) }}
     </p>
 </div>

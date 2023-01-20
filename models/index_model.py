@@ -36,16 +36,14 @@ def get_zakaz_zakazchika(conn, zakazchkic_id):
     conn, params={"id": zakazchkic_id})
 
 def get_new_zakazchik(conn, fio, tel, adr):
-    """
-    Функция для обработки данных о новом читателе
-    """
+
     cur = conn.cursor()
 
-    cur.execute(
-        '''
+    cur.executescript(
+        f'''
             insert into zakazchiki(zakazchik_FIO, zakazchik_telephone, zakazchik_address) 
-            values (:fio, :tel, :adr)
-        ''', {"fio": fio, "tel": tel, "adr": adr})
+            values ('{fio}', '{tel}', '{adr}')
+        ''')
 
     conn.commit()
 
@@ -53,9 +51,7 @@ def get_new_zakazchik(conn, fio, tel, adr):
 
 
 def new_zakaz(conn, zakaz_id, zakazchik_id):
-    """
-    Функция для обработки данных о взятой книге
-    """
+
     cur = conn.cursor()
 
     cur.executescript(f'''

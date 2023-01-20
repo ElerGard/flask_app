@@ -3,6 +3,20 @@ import pandas as pd
 def get_workers(conn):
     return pd.read_sql('Select * from workers', conn)
 
+def get_new_worker(conn, worker_FIO, worker_dolzhnost):
+
+    cur = conn.cursor()
+
+    cur.execute(
+        f'''
+            insert into workers(worker_FIO, worker_dolzhnost) 
+            values(:fio, :dolsh)
+        ''', {"fio": worker_FIO, "dolsh": worker_dolzhnost})
+
+    conn.commit()
+
+    return cur.lastrowid
+
 def get_zakaz_zakazchika(conn, worker_id):
     return pd.read_sql(
         '''
@@ -32,3 +46,5 @@ def complete(conn, zakaz_id) :
     ''')
 
     return conn.commit()
+
+

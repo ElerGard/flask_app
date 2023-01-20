@@ -11,5 +11,7 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 # закомментировать еще не реализованные
 import controllers.index
 import controllers.new_zakazchik
+import controllers.new_worker
 import controllers.workers
 import controllers.search
+
