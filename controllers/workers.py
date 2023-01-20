@@ -13,7 +13,6 @@ def workers():
     elif request.values.get('worker_FIO'):
         worker_FIO = request.values.get('worker_FIO')
         worker_dolzhnost = request.values.get('worker_dolzhnost')
-        print("asdas")
         session['worker_id'] = get_new_worker(conn, worker_FIO, worker_dolzhnost)
     elif request.values.get('complete'):
         job_id = int(request.values.get('complete'))
